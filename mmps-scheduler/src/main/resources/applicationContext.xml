@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  <!-- Quartz -->
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+    <property name="triggers">
+      <list>
+        <ref local="minutelyTrigger" />
+      </list>
+    </property>
+    <property name="quartzProperties">
+      <props>
+        <prop key="org.terracotta.quartz.skipUpdateCheck">true</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="minutelyTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+    <property name="jobDetail">
+      <ref bean="pullInterfaceDbJobDetail" />
+    </property>
+    <property name="startDelay">
+      <value>60000</value>
+    </property>
+    <property name="repeatInterval">
+      <value>60000</value>
+    </property>
+  </bean>
+
+  <bean id="pullInterfaceDbJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <ref bean="schedulerTaskManager" />
+    </property>
+    <property name="targetMethod">
+      <value>minutely</value>
+    </property>
+  </bean>
+
+  <bean id="schedulerTaskManager" class="com.zzvc.mmps.scheduler.task.manager.SchedulerTaskManager" >
+    <property name="id" value="scheduler.task.manager" />
+  </bean>
+
+</beans>
