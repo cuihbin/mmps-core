@@ -27,7 +27,6 @@ abstract public class AppSupport extends TaskSupport {
 	@Override
 	public void prepareInit() {
 		setAppLanguage();
-		removeParentConsoles();
 		initConsoles();
 		
 		appTitle = findText("app.title", findText("app.name"), findText("app.version"));

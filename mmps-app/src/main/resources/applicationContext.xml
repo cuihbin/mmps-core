@@ -6,6 +6,8 @@
 
   <context:annotation-config />
   <context:component-scan base-package="com.zzvc.mmps" />
+
+  <bean class="com.zzvc.mmps.app.logger.LoggerConsole" />
   
   <bean class="com.zzvc.mmps.app.signal.ShutdownSignalHandler" init-method="init" />
   
