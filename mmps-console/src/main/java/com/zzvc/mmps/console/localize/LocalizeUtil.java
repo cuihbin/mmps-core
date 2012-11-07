@@ -23,15 +23,15 @@ public class LocalizeUtil {
 	
 	private Vector<String> resourceNames = new Vector<String>();
 	
-	private static String language = Locale.getDefault().getLanguage();
+	private static Locale locale = Locale.getDefault();
 	
-	private static DateFormat dateTimeFormatterFull = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, Locale.getDefault());
+	private static DateFormat dateTimeFormatterFull = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, locale);
 	
-	private static DateFormat dateTimeFormatterLong = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.getDefault()); 
+	private static DateFormat dateTimeFormatterLong = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale); 
 	
-	private static DateFormat dateTimeFormatterMedium = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.getDefault());
+	private static DateFormat dateTimeFormatterMedium = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, locale);
 	
-	private static DateFormat dateTimeFormatterShort = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.getDefault()); 
+	private static DateFormat dateTimeFormatterShort = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, locale); 
 	
 	public LocalizeUtil() {
 	}
@@ -41,7 +41,7 @@ public class LocalizeUtil {
 	}
 	
 	public static void setLanguage(String language) {
-		LocalizeUtil.language = language;
+		locale = new Locale(language);
 	}
 	
 	public void pushBundle(String baseName) {
@@ -49,7 +49,7 @@ public class LocalizeUtil {
 	}
 	
 	public String findText(String key, Object... args) {
-		String message = getString(key, language);
+		String message = getString(key, locale);
 		
 		for (int i = 0; i < args.length; i++) {
 			if (args[i] instanceof Date) {
@@ -64,10 +64,10 @@ public class LocalizeUtil {
 		return messageFormats.get(message).format(args);
 	}
 	
-	public String getString(String key, String language) {
+	public String getString(String key, Locale locale) {
 		for (int i = 0; i < resourceNames.size(); i++) {
 			try {
-				return getResourceBundle(resourceNames.get(i), new Locale(language)).getString(key);
+				return getResourceBundle(resourceNames.get(i), locale).getString(key);
 			} catch (MissingResourceException e) {
 			}
 		}
@@ -103,6 +103,9 @@ public class LocalizeUtil {
 	}
 	
 	private ResourceBundle getResourceBundle(String baseName, Locale locale) {
+		if (locale == null) {
+			locale = new Locale("");
+		}
 		return ResourceBundle.getBundle(baseName, locale);
 	}
 }

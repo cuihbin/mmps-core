@@ -57,7 +57,7 @@ abstract public class AppSupport extends TaskSupport {
 
 	private void setAppLanguage() {
 		try {
-			setLanguage(getString("app.language", ""));
+			setLanguage(getString("app.language", null));
 		} catch (MissingResourceException e) {
 		}
 	}
