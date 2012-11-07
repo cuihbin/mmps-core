@@ -1,6 +1,6 @@
 package com.zzvc.mmps.task;
 
-import com.zzvc.mmps.console.helper.ConsoleHelper;
+import com.zzvc.mmps.console.ConsoleHelper;
 
 /**
  * Task's super class for convenience 

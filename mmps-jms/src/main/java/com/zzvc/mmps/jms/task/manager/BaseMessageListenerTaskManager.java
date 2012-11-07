@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.zzvc.mmps.console.helper.ConsoleHelper;
+import com.zzvc.mmps.console.ConsoleHelper;
 import com.zzvc.mmps.jms.task.BaseMessageListenerTask;
 import com.zzvc.mmps.task.utils.TaskUtils;
 

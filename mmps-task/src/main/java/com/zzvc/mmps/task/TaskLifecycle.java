@@ -11,7 +11,7 @@ import org.springframework.context.event.ApplicationContextEvent;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 
-import com.zzvc.mmps.console.helper.ConsoleHelper;
+import com.zzvc.mmps.console.ConsoleHelper;
 import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.task.utils.TaskUtils;
 

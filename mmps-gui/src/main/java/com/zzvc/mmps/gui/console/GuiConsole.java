@@ -5,7 +5,7 @@ import java.util.List;
 
 import sun.misc.Signal;
 
-import com.zzvc.mmps.console.Console;
+import com.zzvc.mmps.console.ConsoleObserver;
 import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.gui.util.PatternUtil;
 
@@ -14,7 +14,7 @@ import com.zzvc.mmps.gui.util.PatternUtil;
  * @author CHB
  *
  */
-public class GuiConsole extends LocalizeUtil implements Console {
+public class GuiConsole extends LocalizeUtil implements ConsoleObserver {
 	
 	protected GuiConsoleFrame frame;
 	
