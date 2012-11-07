@@ -1,8 +1,8 @@
 package com.zzvc.mmps.console;
 
 /**
- * Inform that a console not initialized successfully and should disabled
- * @author CHB
+ * Inform that a console not initialized successfully and should be disabled
+ * @author cuihbin
  *
  */
 public class ConsoleException extends RuntimeException {
