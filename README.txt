@@ -7,10 +7,7 @@ MMPS is the original codename of the project refers to 'Multi-Media Publishing S
 
 mmps-core       Parent of the following modules
 
-mmps-console    Enable application to output log messsage to several destination without
-                knowledge to each of them. A single console is a virtual destination that log
-                messages are output to. An implementation of console writing logs to file is
-                provided by default.
+mmps-console    Console is virtual destination that log messages are output to.
 
 mmps-app        Define application's properties like name and version, and provide facilities
                 such as startup/shutdown.
