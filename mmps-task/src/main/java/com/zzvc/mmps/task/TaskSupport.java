@@ -1,13 +1,13 @@
 package com.zzvc.mmps.task;
 
-import com.zzvc.mmps.console.ConsoleHelper;
+import com.zzvc.mmps.console.ConsoleMessageSupport;
 
 /**
  * Task's super class for convenience 
  * @author CHB
  *
  */
-abstract public class TaskSupport extends ConsoleHelper implements Task {
+abstract public class TaskSupport extends ConsoleMessageSupport implements Task {
 	private String id;
 	private String name;
 	private String label;

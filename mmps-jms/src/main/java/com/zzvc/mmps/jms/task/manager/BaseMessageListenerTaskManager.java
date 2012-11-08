@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.zzvc.mmps.console.ConsoleHelper;
+import com.zzvc.mmps.console.ConsoleMessageSupport;
 import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.jms.task.BaseMessageListenerTask;
 import com.zzvc.mmps.task.utils.TaskUtils;
@@ -15,7 +15,7 @@ import com.zzvc.mmps.task.utils.TaskUtils;
  * @author cuihbin
  *
  */
-abstract public class BaseMessageListenerTaskManager extends ConsoleHelper {
+abstract public class BaseMessageListenerTaskManager extends ConsoleMessageSupport {
 	private Logger logger = Logger.getLogger(BaseMessageListenerTaskManager.class);
 	
 	abstract protected List<BaseMessageListenerTask> getListenerTasks();

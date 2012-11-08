@@ -11,17 +11,17 @@ import org.springframework.context.event.ApplicationContextEvent;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 
-import com.zzvc.mmps.console.ConsoleHelper;
+import com.zzvc.mmps.console.ConsoleMessageSupport;
 import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.task.utils.TaskUtils;
 
 /**
  * Managing task's lifecycle methods
  * 
- * @author CHB
+ * @author cuihbin
  * 
  */
-public class TaskLifecycle extends ConsoleHelper implements InitializingBean, ApplicationListener<ApplicationContextEvent> {
+public class TaskLifecycle extends ConsoleMessageSupport implements InitializingBean, ApplicationListener<ApplicationContextEvent> {
 	private static Logger logger = Logger.getLogger(TaskLifecycle.class);
 
 	@Autowired(required = false)

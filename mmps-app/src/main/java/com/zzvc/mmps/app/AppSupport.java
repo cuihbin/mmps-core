@@ -2,6 +2,9 @@ package com.zzvc.mmps.app;
 
 import java.util.MissingResourceException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.zzvc.mmps.console.ConsoleHelper;
 import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.task.TaskSupport;
 
@@ -13,6 +16,9 @@ import com.zzvc.mmps.task.TaskSupport;
  *
  */
 abstract public class AppSupport extends TaskSupport {
+	@Autowired
+	private ConsoleHelper consoleHelper;
+	
 	private String appTitle;
 	
 	public AppSupport() {
@@ -28,7 +34,7 @@ abstract public class AppSupport extends TaskSupport {
 	@Override
 	public void prepareInit() {
 		setAppLanguage();
-		initConsoles();
+		consoleHelper.initConsoles();
 		
 		appTitle = findText("app.title", findText("app.name"), findText("app.version"));
 		setConsoleTitle(appTitle);
@@ -48,7 +54,7 @@ abstract public class AppSupport extends TaskSupport {
 
 	@Override
 	public void destroy() {
-		destroyConsoles();
+		consoleHelper.destroyConsoles();
 	}
 
 	@Override
