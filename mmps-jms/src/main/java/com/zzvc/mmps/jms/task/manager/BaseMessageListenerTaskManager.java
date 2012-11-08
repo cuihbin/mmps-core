@@ -6,12 +6,13 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.zzvc.mmps.console.ConsoleHelper;
+import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.jms.task.BaseMessageListenerTask;
 import com.zzvc.mmps.task.utils.TaskUtils;
 
 /**
  * Base message listener task manager
- * @author CHB
+ * @author cuihbin
  *
  */
 abstract public class BaseMessageListenerTaskManager extends ConsoleHelper {
@@ -46,7 +47,7 @@ abstract public class BaseMessageListenerTaskManager extends ConsoleHelper {
 		}
 		
 		if (!allTaskExecuteSuccess) {
-			statusMessage("jms.task.manager.status.errorexists", formatDateTimeFull(new Date()));
+			statusMessage("jms.task.manager.status.errorexists", LocalizeUtil.formatDateTimeFull(new Date()));
 		}
 	}
 

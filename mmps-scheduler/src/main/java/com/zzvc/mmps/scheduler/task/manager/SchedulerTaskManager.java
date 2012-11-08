@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.quartz.CronExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.scheduler.task.SchedulerTask;
 import com.zzvc.mmps.task.Task;
 import com.zzvc.mmps.task.TaskSupport;
@@ -19,7 +20,7 @@ import com.zzvc.mmps.task.utils.TaskUtils;
 
 /**
  * Scheduler task manager
- * @author CHB
+ * @author cuihbin
  *
  */
 public class SchedulerTaskManager extends TaskSupport {
@@ -75,7 +76,7 @@ public class SchedulerTaskManager extends TaskSupport {
 		}
 		
 		if (!allTaskExecuteSuccess) {
-			statusMessage("scheduler.task.manager.status.errorexists", formatDateTimeFull(new Date()));
+			statusMessage("scheduler.task.manager.status.errorexists", LocalizeUtil.formatDateTimeFull(new Date()));
 		}
 	}
 	

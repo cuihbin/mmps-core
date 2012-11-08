@@ -15,7 +15,7 @@ import java.util.Vector;
  * Each child of LocalizeUtil can push a ResourceBundle on top of the resource-bundle stack. A message keys is  
  * retrieved from top of the stack and return on first matching. A MissingResourceException will be thrown if 
  * no matches is found.
- * @author CHB
+ * @author cuihbin
  *
  */
 public class LocalizeUtil {
@@ -42,6 +42,22 @@ public class LocalizeUtil {
 	
 	public static void setLanguage(String language) {
 		locale = new Locale(language);
+	}
+	
+	public static String formatDateTimeFull(Date date) {
+		return formatDateTime(dateTimeFormatterFull, date);
+	}
+	
+	public static String formatDateTimeLong(Date date) {
+		return formatDateTime(dateTimeFormatterLong, date);
+	}
+	
+	public static String formatDateTimeMedium(Date date) {
+		return formatDateTime(dateTimeFormatterMedium, date);
+	}
+	
+	public static String formatDateTimeShort(Date date) {
+		return formatDateTime(dateTimeFormatterShort, date);
 	}
 	
 	public void pushBundle(String baseName) {
@@ -76,22 +92,6 @@ public class LocalizeUtil {
                 +", key "+key,
                 this.getClass().getName(),
                 key);
-	}
-	
-	public static String formatDateTimeFull(Date date) {
-		return formatDateTime(dateTimeFormatterFull, date);
-	}
-	
-	public static String formatDateTimeLong(Date date) {
-		return formatDateTime(dateTimeFormatterLong, date);
-	}
-	
-	public static String formatDateTimeMedium(Date date) {
-		return formatDateTime(dateTimeFormatterMedium, date);
-	}
-	
-	public static String formatDateTimeShort(Date date) {
-		return formatDateTime(dateTimeFormatterShort, date);
 	}
 	
 	private static String formatDateTime(DateFormat df, Date date) {

@@ -2,13 +2,14 @@ package com.zzvc.mmps.app;
 
 import java.util.MissingResourceException;
 
+import com.zzvc.mmps.console.localize.LocalizeUtil;
 import com.zzvc.mmps.task.TaskSupport;
 
 /**
  * Support class to define an application's basic behavior. Define exactly one bean extends this
  * class in an application. Extra resource bundle should be added to provide application information
  * like name and version
- * @author CHB
+ * @author cuihbin
  *
  */
 abstract public class AppSupport extends TaskSupport {
@@ -57,7 +58,7 @@ abstract public class AppSupport extends TaskSupport {
 
 	private void setAppLanguage() {
 		try {
-			setLanguage(getString("app.language", null));
+			LocalizeUtil.setLanguage(getString("app.language", null));
 		} catch (MissingResourceException e) {
 		}
 	}
