@@ -2,7 +2,6 @@ package com.zzvc.mmps.console;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -17,14 +16,14 @@ public class ConsoleHelper {
 	private Logger logger = Logger.getLogger(ConsoleHelper.class);
 	
 	@Autowired
-	private List<ConsoleObserver> allDefinedConsoles;
+	private Collection<ConsoleObserver> definedConsoles;
 	
-	private Collection<ConsoleObserver> consoles;
+	private Collection<ConsoleObserver> effectiveConsoles;
 
 	public void initConsoles() {
-		consoles = findNotInheritedConsoles();
+		effectiveConsoles = findNotInheritedConsoles(definedConsoles);
 		
-		for (ConsoleObserver console : consoles) {
+		for (ConsoleObserver console : effectiveConsoles) {
 			try {
 				console.init();
 				ConsoleSubject.registerConsole(console);
@@ -35,7 +34,7 @@ public class ConsoleHelper {
 	}
 	
 	public void destroyConsoles() {
-		for (ConsoleObserver console : consoles) {
+		for (ConsoleObserver console : effectiveConsoles) {
 			try {
 				ConsoleSubject.unregisterConsole(console);
 				console.destroy();
@@ -45,13 +44,11 @@ public class ConsoleHelper {
 		}
 	}
 	
-	private List<ConsoleObserver> findNotInheritedConsoles() {
+	private Collection<ConsoleObserver> findNotInheritedConsoles(Collection<ConsoleObserver> consoles) {
 		List<ConsoleObserver> childConsoles = new ArrayList<ConsoleObserver>();
 		
-		Iterator<ConsoleObserver> it = allDefinedConsoles.iterator();
 		outer:
-		while (it.hasNext()) {
-			ConsoleObserver console = it.next();
+		for (ConsoleObserver console : consoles) {
 			for (int i = 0; i < childConsoles.size(); i++) {
 				if (isParentOf(console, childConsoles.get(i))) {
 					continue outer;
