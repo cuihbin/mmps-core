@@ -4,8 +4,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
-import org.springframework.util.StringUtils;
-
 /**
  * Subject interface that serves the console observers
  * @author cuihbin
@@ -21,8 +19,6 @@ abstract public class ConsoleSubject implements ConsoleBehavior {
 	public static void unregisterConsole(ConsoleObserver console) {
 		consoles.remove(console);
 	}
-	
-	abstract protected String getConsolePrefix();
 
 	@Override
 	public void setConsoleTitle(String consoleTitle) {
@@ -34,43 +30,35 @@ abstract public class ConsoleSubject implements ConsoleBehavior {
 	@Override
 	public void trace(String text) {
 		for (ConsoleObserver console : consoles) {
-			console.trace(getConsolePrefixedLabel() + text);
+			console.trace(text);
 		}
 	}
 
 	@Override
 	public void info(String text) {
 		for (ConsoleObserver console : consoles) {
-			console.info(getConsolePrefixedLabel() + text);
+			console.info(text);
 		}
 	}
 
 	@Override
 	public void warn(String text) {
 		for (ConsoleObserver console : consoles) {
-			console.warn(getConsolePrefixedLabel() + text);
+			console.warn(text);
 		}
 	}
 
 	@Override
 	public void error(String text) {
 		for (ConsoleObserver console : consoles) {
-			console.error(getConsolePrefixedLabel() + text);
+			console.error(text);
 		}
 	}
 
 	@Override
 	public void status(String text) {
 		for (ConsoleObserver console : consoles) {
-			console.status(getConsolePrefixedLabel() + text);
+			console.status(text);
 		}
-	}
-	
-	private String getConsolePrefixedLabel() {
-		String prefix = getConsolePrefix();
-		if (StringUtils.hasText(prefix)) {
-			return "[" + prefix + "] ";
-		}
-		return "";
 	}
 }
