@@ -17,6 +17,8 @@ import com.zzvc.mmps.gui.util.PatternUtil;
 public class GuiConsole extends LocalizeUtil implements ConsoleObserver {
 	
 	protected GuiConsoleFrame frame;
+	protected GuiConsoleFileChooser fileChooser;
+	protected GuiConsoleDialog dialog;
 	
 	private List<GuiConsoleButton> buttons = new ArrayList<GuiConsoleButton>();
 	
@@ -31,11 +33,15 @@ public class GuiConsole extends LocalizeUtil implements ConsoleObserver {
 		pushBundle("GuiConsoleResources");
 		
 		frame = new GuiConsoleFrame(this);
+		fileChooser = new GuiConsoleFileChooser(this);
+		dialog = new GuiConsoleDialog(this);
 	}
 
 	@Override
 	public void setConsoleTitle(String consoleTitle) {
 		frame.setTitle(consoleTitle);
+		fileChooser.setTitle(consoleTitle);
+		dialog.setTitle(consoleTitle);
 	}
 
 	@Override

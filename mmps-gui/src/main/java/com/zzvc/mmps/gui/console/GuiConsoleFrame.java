@@ -132,14 +132,14 @@ public class GuiConsoleFrame extends JFrame {
 		
 		this.setVisible(true);
 	}
-	
-	public File selectFileForRead(String fileExtension, String fileFilterDescription) {
-		return selectFile(fileExtension, fileFilterDescription, CHECK_EXISTS);
-	}
-	
-	public File selectFileForWrite(String fileExtension, String fileFilterDescription) {
-		return selectFile(fileExtension, fileFilterDescription, CONFIRM_OVERWRITE);
-	}
+//	
+//	public File selectFileForRead(String fileExtension, String fileFilterDescription) {
+//		return selectFile(fileExtension, fileFilterDescription, CHECK_EXISTS);
+//	}
+//	
+//	public File selectFileForWrite(String fileExtension, String fileFilterDescription) {
+//		return selectFile(fileExtension, fileFilterDescription, CONFIRM_OVERWRITE);
+//	}
 	
 	@Override
 	protected void processWindowEvent(WindowEvent e) {
@@ -164,27 +164,27 @@ public class GuiConsoleFrame extends JFrame {
 		});
 		buttonPanel.add(button);
 	}
-
-	private File selectFile(String fileExtension, String fileFilterDescription, int flag) {
-		fDialog.resetChoosableFileFilters();
-		fDialog.addChoosableFileFilter(new GuiFileFilter(fileExtension, fileFilterDescription));
-		int result = fDialog.showOpenDialog(null);
-		if (result == JFileChooser.APPROVE_OPTION) {
-			File file = fDialog.getSelectedFile();
-			if ((flag & CHECK_EXISTS) > 0 && !file.exists()) {
-				JOptionPane.showMessageDialog(null, console.findText("console.gui.file.notexists", file.getName()));
-				throw new FileException("File not exists");
-			}
-			if ((flag & CONFIRM_OVERWRITE) > 0 && file.exists()) {
-				if (JOptionPane.showConfirmDialog(null, console.findText("console.gui.file.confirmoverwrite", file.getName()), getTitle(), JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) {
-					throw new FileException("File already exists");
-				}
-			}
-			return file;
-		} else {
-			throw new FileException("User canceled file selection");
-		}
-	}
+//
+//	private File selectFile(String fileExtension, String fileFilterDescription, int flag) {
+//		fDialog.resetChoosableFileFilters();
+//		fDialog.addChoosableFileFilter(new GuiFileFilter(fileExtension, fileFilterDescription));
+//		int result = fDialog.showOpenDialog(null);
+//		if (result == JFileChooser.APPROVE_OPTION) {
+//			File file = fDialog.getSelectedFile();
+//			if ((flag & CHECK_EXISTS) > 0 && !file.exists()) {
+//				JOptionPane.showMessageDialog(null, console.findText("console.gui.file.notexists", file.getName()));
+//				throw new FileException("File not exists");
+//			}
+//			if ((flag & CONFIRM_OVERWRITE) > 0 && file.exists()) {
+//				if (JOptionPane.showConfirmDialog(null, console.findText("console.gui.file.confirmoverwrite", file.getName()), getTitle(), JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) {
+//					throw new FileException("File already exists");
+//				}
+//			}
+//			return file;
+//		} else {
+//			throw new FileException("User canceled file selection");
+//		}
+//	}
 	
 	protected void addTrace(final String text) {
 		invokeUpdateLogView(text, traceLogMessageAttributeSet);
