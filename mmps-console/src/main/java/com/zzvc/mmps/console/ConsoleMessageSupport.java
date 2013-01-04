@@ -53,24 +53,24 @@ abstract public class ConsoleMessageSupport extends ConsoleSubject {
 		return localizeUtil.getString(key, locale);
 	}
 	
-	public void traceMessage(String messageKey, Object... args) {
-		trace(findText(messageKey, args));
+	public void traceMessage(String key, Object... args) {
+		trace(findText(key, args));
 	}
 	
-	public void infoMessage(String messageKey, Object... args) {
-		info(findText(messageKey, args));
+	public void infoMessage(String key, Object... args) {
+		info(findText(key, args));
 	}
 	
-	public void warnMessage(String messageKey, Object... args) {
-		warn(findText(messageKey, args));
+	public void warnMessage(String key, Object... args) {
+		warn(findText(key, args));
 	}
 	
-	public void errorMessage(String messageKey, Object... args) {
-		error(findText(messageKey, args));
+	public void errorMessage(String key, Object... args) {
+		error(findText(key, args));
 	}
 	
-	public void statusMessage(String messageKey, Object... args) {
-		status(findText(messageKey, args));
+	public void statusMessage(String key, Object... args) {
+		status(findText(key, args));
 	}
 	
 	private String getConsolePrefixedLabel() {
