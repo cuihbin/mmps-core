@@ -15,14 +15,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ConsoleHelper {
 	private Logger logger = Logger.getLogger(ConsoleHelper.class);
 	
-	@Autowired
+	@Autowired(required=false)
 	private Collection<ConsoleObserver> definedConsoles;
 	
 	private Collection<ConsoleObserver> effectiveConsoles;
 
 	public void initConsoles() {
-		effectiveConsoles = findNotInheritedConsoles(definedConsoles);
+		if (definedConsoles == null) {
+			return;
+		}
 		
+		effectiveConsoles = findNotInheritedConsoles(definedConsoles);
 		for (ConsoleObserver console : effectiveConsoles) {
 			try {
 				console.init();
