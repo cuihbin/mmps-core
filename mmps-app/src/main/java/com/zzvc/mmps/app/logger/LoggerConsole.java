@@ -6,10 +6,9 @@ import com.zzvc.mmps.console.ConsoleObserver;
 
 public class LoggerConsole implements ConsoleObserver {
 	private static Logger logger = Logger.getLogger(LoggerConsole.class);
-	
+
 	@Override
 	public void setConsoleTitle(String consoleTitle) {
-
 	}
 
 	@Override
@@ -39,12 +38,9 @@ public class LoggerConsole implements ConsoleObserver {
 
 	@Override
 	public void init() {
-		
 	}
 
 	@Override
 	public void destroy() {
-		
 	}
-
 }
