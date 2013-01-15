@@ -33,10 +33,8 @@ public class GuiConsoleFileChooser {
 	
 	public File selectFileForWrite(String fileExtension, String fileFilterDescription) {
 		File file = selectFile(fileExtension, fileFilterDescription);
-		if (file.exists()) {
-			if (JOptionPane.showConfirmDialog(null, console.findText("console.gui.file.confirmoverwrite", file.getName()), title, JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) {
-				throw new FileException("File already exists");
-			}
+		if (file.exists() && !confirmOverwrite(file)) {
+			throw new FileException("File already exists");
 		}
 		return file;
 	}
@@ -50,6 +48,11 @@ public class GuiConsoleFileChooser {
 		} else {
 			throw new FileException("User canceled file selection");
 		}
+	}
+	
+	private boolean confirmOverwrite(File file) {
+		String message = console.findText("console.gui.file.confirmoverwrite", file.getName());
+		return JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION;
 	}
 
 }
