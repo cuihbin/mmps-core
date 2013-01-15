@@ -7,14 +7,15 @@ import sun.misc.SignalHandler;
 
 /**
  * SignalHandler to shutdown application when INT or TERMINAL signal raised
- * @author CHB
- *
+ * 
+ * @author cuihbin
+ * 
  */
 public class ShutdownSignalHandler implements SignalHandler {
-	
+
 	public void init() {
-    	Signal.handle(new Signal("INT"), this);
-    	Signal.handle(new Signal("TERM"), this);
+		Signal.handle(new Signal("INT"), this);
+		Signal.handle(new Signal("TERM"), this);
 	}
 
 	@Override
@@ -22,5 +23,4 @@ public class ShutdownSignalHandler implements SignalHandler {
 		BeanFactory.close();
 		System.exit(0);
 	}
-
 }
