@@ -15,8 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		BeanFactory.start();
 
-		Map<String, AppArgsListener> listeners = BeanFactory
-				.getBeansOfType(AppArgsListener.class);
+		Map<String, AppArgsListener> listeners = BeanFactory.getBeansOfType(AppArgsListener.class);
 		for (AppArgsListener listener : listeners.values()) {
 			listener.processArgs(args);
 		}
