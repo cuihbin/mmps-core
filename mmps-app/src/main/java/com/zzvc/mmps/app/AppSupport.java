@@ -49,7 +49,7 @@ abstract public class AppSupport extends TaskSupport {
 	
 	@Override
 	public void beforeShutdown() {
-		infoMessage("app.shuttingdown", appTitle);
+		infoMessage("app.stopping", appTitle);
 	}
 
 	@Override
