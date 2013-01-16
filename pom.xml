@@ -19,24 +19,6 @@
     <developerConnection>scm:git:git@github.com:cuihbin/mmps-core.git</developerConnection>
     <url>https://github.com/cuihbin</url>
   </scm>
-  
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context-support</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-  </dependencies>
 
   <modules>
     <module>mmps-app</module>
