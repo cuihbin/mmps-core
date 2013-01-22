@@ -1,3 +1,6 @@
+mmps-core-2.1
+ + Change to mmps-parent-2.0
+
 mmps-core-2.0
  + Refactor GUI dialog support
  + Add application argument handling mechanism
