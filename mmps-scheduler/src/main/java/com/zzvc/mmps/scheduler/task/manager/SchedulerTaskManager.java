@@ -39,7 +39,7 @@ public class SchedulerTaskManager extends TaskSupport {
 	}
 
 	@Override
-	public void prepareInit() {
+	public void preInit() {
 		if (schedulerTasks == null) {
 			schedulerTasks = new ArrayList<SchedulerTask>();
 		}

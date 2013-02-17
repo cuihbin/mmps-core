@@ -28,7 +28,7 @@ public class QueueMessageListenerContainer extends BaseMessageListenerContainer 
 	protected List<QueueMessageListenerTask> listenerTasks;
 
 	@Override
-	public void prepareInit() {
+	public void preInit() {
 		if (listenerTasks == null) {
 			listenerTasks = new ArrayList<QueueMessageListenerTask>();
 		}

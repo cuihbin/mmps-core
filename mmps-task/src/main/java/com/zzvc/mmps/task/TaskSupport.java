@@ -36,33 +36,23 @@ abstract public class TaskSupport extends ConsoleMessageSupport implements Task 
 	}
 
 	@Override
-	public void prepareInit() {
-		// TODO Auto-generated method stub
-		
+	public void preInit() {
 	}
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void afterStartup() {
-		// TODO Auto-generated method stub
-		
+	public void postInit() {
 	}
 
 	@Override
-	public void beforeShutdown() {
-		// TODO Auto-generated method stub
-		
+	public void preDestroy() {
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

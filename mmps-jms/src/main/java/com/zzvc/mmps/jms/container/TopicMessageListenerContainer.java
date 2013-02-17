@@ -28,7 +28,7 @@ public class TopicMessageListenerContainer extends BaseMessageListenerContainer 
 	protected List<TopicMessageListenerTask> listenerTasks;
 
 	@Override
-	public void prepareInit() {
+	public void preInit() {
 		if (listenerTasks == null) {
 			listenerTasks = new ArrayList<TopicMessageListenerTask>();
 		}

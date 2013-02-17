@@ -32,7 +32,7 @@ abstract public class AppSupport extends TaskSupport {
 	}
 
 	@Override
-	public void prepareInit() {
+	public void preInit() {
 		setAppLanguage();
 		consoleHelper.initConsoles();
 		
@@ -42,13 +42,13 @@ abstract public class AppSupport extends TaskSupport {
 	}
 	
 	@Override
-	public void afterStartup() {
+	public void postInit() {
 		infoMessage("app.started", appTitle);
 		statusMessage("app.status.running", appTitle);
 	}
 	
 	@Override
-	public void beforeShutdown() {
+	public void preDestroy() {
 		infoMessage("app.stopping", appTitle);
 	}
 

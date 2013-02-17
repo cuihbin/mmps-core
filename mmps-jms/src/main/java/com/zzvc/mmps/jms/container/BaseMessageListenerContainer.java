@@ -50,12 +50,12 @@ public abstract class BaseMessageListenerContainer extends TaskSupport implement
 	}
 	
 	@Override
-	public void afterStartup() {
+	public void postInit() {
 		new Thread(this).start();
 	}
 
 	@Override
-	public void beforeShutdown() {
+	public void preDestroy() {
 		if (brokerStartedSuccess) {
 			container.stop();
 			container.destroy();

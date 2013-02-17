@@ -1,7 +1,7 @@
 package com.zzvc.mmps.task;
 
 /**
- * Task is the basic working unit of an application. It provides task property management and life cycle event call backs.
+ * Application function unit with properties and life cycle events.
  * @author CHB
  *
  */
@@ -36,7 +36,7 @@ public interface Task {
 	 * Avoid message output to consoles in this call back as they are not ready yet. 
 	 * Task marked as failed if exception thrown.
 	 */
-	void prepareInit();
+	void preInit();
 
 	/**
 	 * Initializing task. Task's isWaitingPrequisiteInit() must be false or the initializing will be postponed.
@@ -47,15 +47,15 @@ public interface Task {
 	/**
 	 * Called as soon as all task finished initializing.
 	 */
-	void afterStartup();
+	void postInit();
 	
 	/**
-	 * Called before shutdown but all underlying services like console are still available
+	 * Called before shutdown. All underlying services (consoles, other tasks, etc.) are still available.
 	 */
-	void beforeShutdown();
+	void preDestroy();
 	
 	/**
-	 * Callback on destroy
+	 * Called on destroy.
 	 */
 	void destroy();
 }

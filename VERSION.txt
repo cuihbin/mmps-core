@@ -1,3 +1,7 @@
+mmps-core-2.2
+ + Improved mmps-task API
+ + Fixed provide mechanism to avoid hanging on application closing while not finish initializing
+
 mmps-core-2.1
  + Change to mmps-parent-2.0
 
