@@ -106,19 +106,6 @@ public class TaskLifecycleManager extends ConsoleMessageSupport implements Initi
 		Signal.raise(new Signal("INT"));
 	}
 
-	public void preDestroy() {
-		for (Task task : tasks) {
-			if (!TaskUtils.isTaskFailed(task)) {
-				try {
-					task.preDestroy();
-				} catch (Exception e) {
-					warnMessage("task.lifecycle.warn.shutdown.exception", task.getName());
-					logger.error("Error shutdown task [" + task.getName() + "]", e);
-				}
-			}
-		}
-	}
-
 	public void destroy() {
 		for (Task task : tasks) {
 			if (TaskUtils.isTaskInited(task)) {
@@ -152,4 +139,16 @@ public class TaskLifecycleManager extends ConsoleMessageSupport implements Initi
 		}
 	}
 
+	private void preDestroy() {
+		for (Task task : tasks) {
+			if (!TaskUtils.isTaskFailed(task)) {
+				try {
+					task.preDestroy();
+				} catch (Exception e) {
+					warnMessage("task.lifecycle.warn.shutdown.exception", task.getName());
+					logger.error("Error shutdown task [" + task.getName() + "]", e);
+				}
+			}
+		}
+	}
 }
