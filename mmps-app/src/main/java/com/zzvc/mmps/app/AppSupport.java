@@ -38,18 +38,17 @@ abstract public class AppSupport extends TaskSupport {
 		
 		appTitle = findText("app.title", findText("app.name"), findText("app.version"));
 		setConsoleTitle(appTitle);
-		infoMessage("app.starting", appTitle);
+		appMessage("app.starting", appTitle);
 	}
 	
 	@Override
 	public void postInit() {
-		infoMessage("app.started", appTitle);
-		statusMessage("app.status.running", appTitle);
+		appMessage("app.started", appTitle);
 	}
 	
 	@Override
 	public void preDestroy() {
-		infoMessage("app.stopping", appTitle);
+		appMessage("app.stopping", appTitle);
 	}
 
 	@Override
@@ -69,4 +68,8 @@ abstract public class AppSupport extends TaskSupport {
 		}
 	}
 
+	private void appMessage(String key, Object... args) {
+		infoMessage(key, args);
+		statusMessage(key, args);
+	}
 }
